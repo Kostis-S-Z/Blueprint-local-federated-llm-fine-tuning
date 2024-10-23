@@ -72,13 +72,20 @@ cd Blueprint-local-federated-llm-fine-tuning
 
 2. Create a virtual environment and install the dependencies. 
 
-**_Note:_** If you are going to develop the project further, it is highly recommended you install the `[dev]` version which includes pre-commit. Pre-commit will automatically execute [back](https://black.readthedocs.io/en/stable/) + [isort](https://github.com/PyCQA/isort) at every git commit to help you keep a consistent code format.
 
 
 ```bash
 python -m venv ./venv
 source venv/bin/activate
-pip install -e .  # or pip install -e .[dev]
+```
+**_Note:_** If you are going to develop the project further, it is highly recommended you install the `[dev]` version which includes pre-commit. Pre-commit will automatically execute [back](https://black.readthedocs.io/en/stable/) + [isort](https://github.com/PyCQA/isort) at every git commit to help you keep a consistent code format.
+```bash
+pip install -e .
+```
+_OR_
+```bash
+pip install -e .[dev]
+pre-commit install
 ```
 
 3. Run in _simulation mode_ with a 4-bit [OpenLLaMA 3Bv2](https://huggingface.co/openlm-research/open_llama_3b_v2) model. By default, there are 20 clients and there is a 10% strategy fit per round for 100 FL server rounds.
