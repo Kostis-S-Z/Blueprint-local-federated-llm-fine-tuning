@@ -41,7 +41,7 @@ Built with:
 - _(Optional)_ [Pre-commit](https://github.com/pre-commit/pre-commit) + [Black](https://black.readthedocs.io/en/stable/) + [Isort](https://github.com/PyCQA/isort) for consistent code formatting
 
 #### Server requirements:
-- 12B RAM for [OpenLLaMA 3Bv2](https://huggingface.co/openlm-research/open_llama_3b_v2) with 4-bit quantization
+- 12GB RAM for [OpenLLaMA 3Bv2](https://huggingface.co/openlm-research/open_llama_3b_v2) with 4-bit quantization
 
 #### Client requirements:
 - 2GB RAM for [OpenLLaMA 3Bv2](https://huggingface.co/openlm-research/open_llama_3b_v2) with 4-bit quantization
