@@ -4,7 +4,7 @@
 
 # Federated LLM Fine-tuning with Private Data
 
-This blueprint guides you through getting started with federated fine-tuning of LLMs. It utilizes Flower for Federated Learning and Differential Privacy and Hugging Face’s PEFT (Parameter-Efficient Fine-Tuning) for Fine-Tuning the LLM.
+This blueprint guides you through getting started with federated fine-tuning of LLMs. It utilizes Flower for Federated Learning and Differential Privacy and Hugging Face’s PEFT (Parameter-Efficient Fine-Tuning) for fine-tuning the LLM.
 
 <p align="center"><img src="https://www.dailydoseofds.com/content/images/size/w600/format/webp/2023/11/federated-gif.gif"  alt="fl_diagram"/></p>
 
@@ -14,7 +14,7 @@ _(Figure source [link](https://www.dailydoseofds.com/federated-learning-a-critic
 ## Table of Contents
 
 * [Project overview](#project-overview)
-  * [Technical specifications](#technical-specifications)
+  * [Technical Specifications](#technical-specifications)
   * [Federated-Learning](#federated-learning)
   * [Parameter-efficient Fine-tuning](#parameter-efficient-fine-tuning)
   * [Differential Privacy](#differential-privacy)
@@ -31,7 +31,7 @@ _(Figure source [link](https://www.dailydoseofds.com/federated-learning-a-critic
 
 This Blueprint aims to provide a foundation for a robust and privacy-preserving solution for distributed AI, ensuring that private data remains on-device while collaborating on model improvement. 
 
-### Technical specifications
+### Technical Specifications
 
 Built with:
 - [Python](https://www.python.org/) (3.10 or higher)
@@ -78,7 +78,7 @@ cd Blueprint-local-federated-llm-fine-tuning
 python -m venv ./venv
 source venv/bin/activate
 ```
-**_Note:_** If you are going to develop the project further, it is highly recommended you install the `[dev]` version which includes pre-commit. Pre-commit will automatically execute [back](https://black.readthedocs.io/en/stable/) + [isort](https://github.com/PyCQA/isort) at every git commit to help you keep a consistent code format.
+**_Note:_** If you are going to develop the project further, it is highly recommended you install the `[dev]` version which includes pre-commit. Pre-commit will automatically execute [black](https://black.readthedocs.io/en/stable/) + [isort](https://github.com/PyCQA/isort) at every git commit to help you keep a consistent code format.
 ```bash
 pip install -e .
 ```
