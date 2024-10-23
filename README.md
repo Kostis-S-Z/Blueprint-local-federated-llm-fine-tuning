@@ -9,7 +9,7 @@ This blueprint guides you through getting started with federated fine-tuning of 
 <p align="center"><img src="https://www.dailydoseofds.com/content/images/size/w600/format/webp/2023/11/federated-gif.gif"  alt="fl_diagram"/></p>
 
 
-_(Figure source: https://www.dailydoseofds.com/federated-learning-a-critical-step-towards-privacy-preserving-machine-learning/)_
+_(Figure source [link](https://www.dailydoseofds.com/federated-learning-a-critical-step-towards-privacy-preserving-machine-learning/))_
 
 ## Table of Contents
 
