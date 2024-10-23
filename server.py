@@ -4,11 +4,11 @@ from datetime import datetime
 from flwr.common import Context, ndarrays_to_parameters
 from flwr.common.config import unflatten_dict
 from flwr.server import ServerApp, ServerAppComponents, ServerConfig
-from flwr.server.strategy import FedAvg, DifferentialPrivacyClientSideFixedClipping
+from flwr.server.strategy import DifferentialPrivacyClientSideFixedClipping, FedAvg
 from omegaconf import DictConfig
 
-from model import get_model, get_parameters, set_parameters
 from data import replace_keys
+from model import get_model, get_parameters, set_parameters
 
 
 # Get function that will be executed by the strategy's evaluate() method
@@ -85,12 +85,14 @@ def server_fn(context: Context):
     )
 
     # Add Differential Privacy
-    sampled_clients = context.run_config["options.num-supernodes"] * cfg.strategy.fraction_fit
+    sampled_clients = (
+        context.run_config["options.num-supernodes"] * cfg.strategy.fraction_fit
+    )
     strategy = DifferentialPrivacyClientSideFixedClipping(
         strategy,
         noise_multiplier=cfg.dp.dp.noise_mult,
         clipping_norm=cfg.dp.clip_norm,
-        num_sampled_clients=sampled_clients
+        num_sampled_clients=sampled_clients,
     )
 
     config = ServerConfig(num_rounds=num_rounds)

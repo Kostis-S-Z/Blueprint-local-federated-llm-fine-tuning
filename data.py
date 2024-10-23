@@ -1,15 +1,14 @@
+from flwr_datasets import FederatedDataset
+from flwr_datasets.partitioner import IidPartitioner
 from transformers import AutoTokenizer
 from trl import DataCollatorForCompletionOnlyLM
-
-from flwr_datasets.partitioner import IidPartitioner
-from flwr_datasets import FederatedDataset
 
 FDS = None  # Cache FederatedDataset
 
 
 def formatting_prompts_func(example):
     output_texts = []
-    # Constructing a standard Alpaca (https://github.com/tatsu-lab/stanford_alpaca#data-release) prompt
+    # Construct a standard Alpaca (https://github.com/tatsu-lab/stanford_alpaca#data-release) prompt
     mssg = "Below is an instruction that describes a task. Write a response that appropriately completes the request."
     for i in range(len(example["instruction"])):
         text = f"{mssg}\n### Instruction:\n{example['instruction'][i]}\n### Response: {example['response'][i]}"
