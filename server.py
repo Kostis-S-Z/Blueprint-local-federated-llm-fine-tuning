@@ -1,5 +1,6 @@
 import os
 from datetime import datetime
+from typing import Dict
 
 from flwr.common import Context, ndarrays_to_parameters
 from flwr.common.config import unflatten_dict
@@ -32,20 +33,18 @@ def get_evaluate_fn(model_cfg, save_every_round, total_round, save_path):
     return evaluate
 
 
-def get_on_fit_config(save_path):
+def get_on_fit_config(save_path: str):
     """Return a function that will be used to construct the config that the client's
     fit() method will receive."""
 
-    def fit_config_fn(server_round: int):
-        fit_config = {}
-        fit_config["current_round"] = server_round
-        fit_config["save_path"] = save_path
+    def fit_config_fn(server_round: int) -> Dict:
+        fit_config = {"current_round": server_round, "save_path": save_path}
         return fit_config
 
     return fit_config_fn
 
 
-def fit_weighted_average(metrics):
+def fit_weighted_average(metrics) -> Dict:
     """Aggregate (federated) evaluation metrics."""
     # Multiply accuracy of each client by number of examples used
     losses = [num_examples * m["train_loss"] for num_examples, m in metrics]

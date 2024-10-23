@@ -28,7 +28,7 @@ class FlowerClient(NumPyClient):
         tokenizer,
         formatting_prompts_func,
         data_collator,
-        num_rounds,
+        num_rounds: int,
     ):
         self.device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
         self.train_cfg = train_cfg
@@ -86,7 +86,6 @@ def client_fn(context: Context) -> FlowerClient:
     num_rounds = context.run_config["num-server-rounds"]
     cfg = DictConfig(replace_keys(unflatten_dict(context.run_config)))
 
-    # Let's get the client partition
     client_trainset = load_data(partition_id, num_partitions, cfg.dataset.name)
     (
         tokenizer,

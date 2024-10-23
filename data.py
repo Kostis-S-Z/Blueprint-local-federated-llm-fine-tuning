@@ -1,3 +1,5 @@
+from typing import Dict, List
+
 from flwr_datasets import FederatedDataset
 from flwr_datasets.partitioner import IidPartitioner
 from transformers import AutoTokenizer
@@ -6,9 +8,13 @@ from trl import DataCollatorForCompletionOnlyLM
 FDS = None  # Cache FederatedDataset
 
 
-def formatting_prompts_func(example):
+def formatting_prompts_func(example: Dict) -> List[str]:
+    """
+    Format the prompt according to the Alpaca model, https://github.com/tatsu-lab/stanford_alpaca#data-release
+    :param example: Dictionary of format {"instruction":str, "input":str, "output":str}
+    :return: the formatted example
+    """
     output_texts = []
-    # Construct a standard Alpaca (https://github.com/tatsu-lab/stanford_alpaca#data-release) prompt
     mssg = "Below is an instruction that describes a task. Write a response that appropriately completes the request."
     for i in range(len(example["instruction"])):
         text = f"{mssg}\n### Instruction:\n{example['instruction'][i]}\n### Response: {example['response'][i]}"
@@ -49,7 +55,7 @@ def load_data(partition_id: int, num_partitions: int, dataset_name: str):
     return client_trainset
 
 
-def replace_keys(input_dict, match="-", target="_"):
+def replace_keys(input_dict: Dict, match="-", target="_") -> Dict:
     """Recursively replace match string with target string in dictionary keys."""
     new_dict = {}
     for key, value in input_dict.items():
